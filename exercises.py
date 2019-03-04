@@ -3,16 +3,16 @@ import operator
 
 # Rotate Image
 
-def rotate_image(array):
-    new_array = []
-    for element in array:
-        new_array.append([])
-    array.reverse()
-    for index, element in enumerate(array[0]):
-        new_array[index].append(element)
-        for row in array[1:]:
-            new_array[index].append(row[index])
-    print(new_array)
+def rotate_image(matrix):
+    new_matrix = []
+    for element in matrix:
+        new_matrix.append([])
+    matrix.reverse()
+    for index, element in enumerate(matrix[0]):
+        new_matrix[index].append(element)
+        for row in matrix[1:]:
+            new_matrix[index].append(row[index])
+    print(new_matrix)
 
 
 matrix = [
