@@ -3,7 +3,7 @@ import operator
 
 # Rotate Image
 
-def rotate_array(array):
+def rotate_image(array):
     new_array = []
     for element in array:
         new_array.append([])
