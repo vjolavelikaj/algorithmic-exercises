@@ -22,28 +22,54 @@ matrix = [
     [13, 14, 15, 16]
 ]
 
+
 ######################################################################################
 
-# class Node(object):
-#     def __init__(self, x):
-#         self.value = x
-#         self.left = None
-#         self.right = None
-#
-#
-# def create_binary_tree(x):
-#     if (x >= 2):
-#         print(x)
-#         node = Node(x)
-#         less = int(x / 2)
-#         more = x * 2
-#         node.left = less
-#         node.right = more
-#         create_binary_tree(node.left)
-#         create_binary_tree(node.right)
+class Node(object):
+    sums = []
 
+    def __init__(self, x):
+        self.value = x
+        self.left = None
+        self.right = None
 
-# def has_path_with_given_sum(tree, sum):
+    def insert_tree_node(self, x):
+        if self.value:
+            if x < self.value:
+                if self.left is None:
+                    self.left = Node(x)
+                else:
+                    self.left.insert_tree_node(x)
+            elif x > self.value:
+                if self.right is None:
+                    self.right = Node(x)
+                else:
+                    self.right.insert_tree_node(x)
+        else:
+            self.value = x
+
+    def print_tree(self):
+        if self.left:
+            self.left.print_tree()
+        print(self.value),
+        if self.right:
+            self.right.print_tree()
+
+    def all_paths_sums(self, progressive_sum):
+        progressive_sum = progressive_sum + self.value
+        if self.left is None and self.right is None:
+            self.sums.append(progressive_sum)
+        if self.left:
+            self.left.has_path_with_given_sum(progressive_sum)
+        if self.right:
+            self.right.has_path_with_given_sum(progressive_sum)
+
+    def has_path_with_sum(self, sum):
+        sums = self.all_paths_sums(0)
+        if sum in sums:
+            return True
+        return False
+
 
 ######################################################################################
 
