@@ -65,8 +65,7 @@ class Node(object):
             self.right.has_path_with_given_sum(progressive_sum)
 
     def has_path_with_sum(self, sum):
-        sums = self.all_paths_sums(0)
-        if sum in sums:
+        if sum in self.sums:
             return True
         return False
 
