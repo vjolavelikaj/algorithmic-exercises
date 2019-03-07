@@ -59,15 +59,34 @@ class Node(object):
         progressive_sum = progressive_sum + self.value
         if self.left is None and self.right is None:
             self.sums.append(progressive_sum)
+            print(self.sums)
         if self.left:
-            self.left.has_path_with_given_sum(progressive_sum)
+            self.left.all_paths_sums(progressive_sum)
         if self.right:
-            self.right.has_path_with_given_sum(progressive_sum)
+            self.right.all_paths_sums(progressive_sum)
 
     def has_path_with_sum(self, sum):
+        self.sums = []
+        print(self.sums)
+        self.all_paths_sums(0)
+        print(self.sums)
+        answer = False
         if sum in self.sums:
-            return True
-        return False
+            answer = True
+        return answer
+
+    # from exercises import Node
+    # root = Node(20)
+    # root.insert_tree_node(5)
+    # root.insert_tree_node(60)
+    # root.insert_tree_node(39)
+    # root.insert_tree_node(7)
+    # root.insert_tree_node(40)
+    # root.insert_tree_node(21)
+    # root.insert_tree_node(110)
+    # root.insert_tree_node(11)
+    # root.insert_tree_node(1)
+    # root.has_path_with_sum(26)
 
 
 ######################################################################################
